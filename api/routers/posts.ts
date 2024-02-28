@@ -8,7 +8,7 @@ const postsRouter = express.Router();
 
 postsRouter.get("/", async (req, res, next) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().populate("user", "username");
     return res.send(posts);
   } catch (e) {
     next(e);

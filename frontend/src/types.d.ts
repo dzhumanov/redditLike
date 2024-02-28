@@ -1,8 +1,13 @@
 export interface Post {
   _id: string;
+  user: {
+    username: string;
+    _id: string;
+  };
   title: string;
   description: string;
   image: string;
+  date: Date;
 }
 
 export interface User {

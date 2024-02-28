@@ -2,6 +2,8 @@ import { Container, CssBaseline } from "@mui/material";
 import AppToolbar from "./components/UI/AppToolbar/AppToolbar";
 import { Route, Routes } from "react-router-dom";
 import Posts from "./features/posts/Posts";
+import Register from "./features/users/Register";
+import Login from "./features/users/Login";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Container maxWidth="xl">
           <Routes>
             <Route path="/" element={<Posts />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<h1>Not found</h1>} />
           </Routes>
         </Container>

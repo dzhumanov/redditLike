@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { selectPosts } from "./postSlice";
 import { useEffect } from "react";
 import { fetchPosts } from "./postThunk";
+import PostItem from "./Components/PostItem";
 
 const Posts = () => {
   const dispatch = useAppDispatch();
@@ -15,12 +16,9 @@ const Posts = () => {
   return (
     <>
       <Typography variant="h3">All posts</Typography>
-      <Grid item container spacing={2}>
+      <Grid item container direction="column" spacing={2}>
         {posts.map((post) => (
-          <Grid item sm md={4} lg={3} key={post._id}>
-            <Typography>{post.title}</Typography>
-            <Typography>{post.description}</Typography>
-          </Grid>
+          <PostItem post={post} key={post._id} />
         ))}
       </Grid>
     </>
