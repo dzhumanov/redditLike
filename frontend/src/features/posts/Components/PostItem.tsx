@@ -1,8 +1,17 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, styled } from "@mui/material";
 import { Post } from "../../../types";
 import { apiURL } from "../../../constants";
 import dayjs from "dayjs";
-import ChatIcon from '../../../assets/chatIcon.webp'
+import ChatIcon from "../../../assets/chatIcon.webp";
+import { NavLink } from "react-router-dom";
+
+const Link = styled(NavLink)({
+  color: "inherit",
+  textDecoration: "none",
+  "&:hover": {
+    color: "inherit",
+  },
+});
 
 interface Props {
   post: Post;
@@ -52,7 +61,11 @@ const PostItem: React.FC<Props> = ({ post }) => {
               <span style={{ fontWeight: "bold" }}>{post.user.username}</span>
             </Typography>
           </Grid>
-          <Typography variant="h3">{post.title}</Typography>
+          <Link to={`posts/${post?._id}`}>
+            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+              {post?.title}
+            </Typography>
+          </Link>
         </Grid>
       </Grid>
     </>

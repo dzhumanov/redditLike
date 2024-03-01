@@ -11,6 +11,15 @@ export const fetchPosts = createAsyncThunk<Post[]>(
   }
 );
 
+export const fetchOnePost = createAsyncThunk<Post, string>(
+  "posts/fetchOne",
+  async (postId: string) => {
+    const response = await axiosApi.get<Post>(`/posts/${postId}`);
+    return response.data;
+  }
+);
+
+
 export const createPost = createAsyncThunk<
   void,
   PostMutation,

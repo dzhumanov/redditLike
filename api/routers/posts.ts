@@ -2,7 +2,7 @@ import express from "express";
 import Post from "../models/Post";
 import auth, { RequestWithUser } from "../middleware/auth";
 import { imageUpload } from "../multer";
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 const postsRouter = express.Router();
 
@@ -10,6 +10,27 @@ postsRouter.get("/", async (req, res, next) => {
   try {
     const posts = await Post.find().populate("user", "username");
     return res.send(posts);
+  } catch (e) {
+    next(e);
+  }
+});
+
+postsRouter.get("/:id", async (req, res, next) => {
+  try {
+    let _id: Types.ObjectId;
+    try {
+      _id = new Types.ObjectId(req.params.id);
+    } catch {
+      return res.status(404).send({ error: "Wrong ObjectId!" });
+    }
+
+    const post = await Post.findById(_id);
+
+    if (!post) {
+      return res.status(404).send({ error: "Not found!" });
+    }
+
+    res.send(post);
   } catch (e) {
     next(e);
   }

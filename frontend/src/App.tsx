@@ -5,6 +5,7 @@ import Posts from "./features/posts/Posts";
 import Register from "./features/users/Register";
 import Login from "./features/users/Login";
 import CreatePost from "./features/posts/CreatePost";
+import FullPost from "./features/posts/Components/FullPost";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Container maxWidth="xl">
           <Routes>
             <Route path="/" element={<Posts />} />
+            <Route path="/posts/:id" element={<FullPost />} />
             <Route path="/addNew" element={<CreatePost />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />

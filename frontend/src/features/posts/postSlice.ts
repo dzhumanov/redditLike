@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { Post } from "../../types";
-import { fetchPosts } from "./postThunk";
+import { fetchOnePost, fetchPosts } from "./postThunk";
 
 interface postsState {
   posts: Post[];
@@ -30,8 +30,20 @@ export const postsSlice = createSlice({
     builder.addCase(fetchPosts.rejected, (state) => {
       state.fetchLoading = false;
     });
+
+    builder.addCase(fetchOnePost.pending, (state) => {
+      state.fetchLoading = true;
+    });
+    builder.addCase(fetchOnePost.fulfilled, (state, { payload: post }) => {
+      state.fetchLoading = false;
+      state.singlePost = post;
+    });
+    builder.addCase(fetchOnePost.rejected, (state) => {
+      state.fetchLoading = false;
+    });
   },
 });
 
 export const postsReducer = postsSlice.reducer;
 export const selectPosts = (state: RootState) => state.posts.posts;
+export const selectSinglePost = (state: RootState) => state.posts.singlePost;
