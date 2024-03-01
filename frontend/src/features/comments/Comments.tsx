@@ -1,16 +1,20 @@
 import { Grid } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectComments } from "./Components/commentsSlice";
+import { selectComments, selectCommentsLoading } from "./commentsSlice";
 import { useEffect } from "react";
 import { selectSinglePost } from "../posts/postSlice";
-import { createComment, fetchComments } from "./Components/commentsThunk";
+import { selectUser } from "../users/usersSlice";
+import { createComment, fetchComments } from "./commentsThunk";
 import CommentItem from "./Components/CommentItem";
 import CommentForm from "./Components/CommentForm";
+import Preloader from "../../components/UI/Preloader/Preloader";
 
 const Comments = () => {
+  const dispatch = useAppDispatch();
   const comments = useAppSelector(selectComments);
   const post = useAppSelector(selectSinglePost);
-  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
+  const loading = useAppSelector(selectCommentsLoading);
 
   const postId = post?._id;
 
@@ -33,12 +37,18 @@ const Comments = () => {
 
   return (
     <>
-      <Grid container>
-        <CommentForm postId={postId} onSubmit={onCommentFormSubmit} />
-        {comments.map((comment) => (
-          <CommentItem comment={comment} key={comment._id} />
-        ))}
-      </Grid>
+      {loading ? (
+        <Preloader loading={loading} />
+      ) : (
+        <Grid container>
+          {user && (
+            <CommentForm postId={postId} onSubmit={onCommentFormSubmit} />
+          )}
+          {comments.map((comment) => (
+            <CommentItem comment={comment} key={comment._id} />
+          ))}
+        </Grid>
+      )}
     </>
   );
 };

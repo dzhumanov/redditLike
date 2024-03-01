@@ -14,13 +14,15 @@ import {
 } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectLoginError } from "./usersSlice";
+import { selectLoginError, selectLoginLoading } from "./usersSlice";
 import { login } from "./usersThunk";
+import Preloader from "../../components/UI/Preloader/Preloader";
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const error = useAppSelector(selectLoginError);
+  const loading = useAppSelector(selectLoginLoading);
 
   const [state, setState] = useState<RegisterMutation>({
     username: "",
@@ -40,6 +42,7 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      {loading && <Preloader loading={loading} />}
       <Box
         style={{
           marginTop: 8,

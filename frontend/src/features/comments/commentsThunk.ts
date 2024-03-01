@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Comment } from "../../../types";
-import axiosApi from "../../../axiosApi";
-import { RootState } from "../../../app/store";
+import { Comment } from "../../types";
+import axiosApi from "../../axiosApi";
+import { RootState } from "../../app/store";
 
 export const fetchComments = createAsyncThunk<Comment[], string>(
   "comments/fetchAll",

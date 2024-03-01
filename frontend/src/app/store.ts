@@ -12,7 +12,7 @@ import {
 } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
 import { postsReducer } from "../features/posts/postSlice";
-import { commentsReducer } from "../features/comments/Components/commentsSlice";
+import { commentsReducer } from "../features/comments/commentsSlice";
 
 const usersPersistConfig = {
   key: "store:users",

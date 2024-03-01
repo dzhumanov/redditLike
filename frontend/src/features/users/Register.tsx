@@ -13,13 +13,15 @@ import {
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectRegisterError } from "./usersSlice";
+import { selectRegisterError, selectRegisterLoading } from "./usersSlice";
 import { register } from "./usersThunk";
+import Preloader from "../../components/UI/Preloader/Preloader";
 
 const Register = () => {
   const dispatch = useAppDispatch();
-  const error = useAppSelector(selectRegisterError);
   const navigate = useNavigate();
+  const error = useAppSelector(selectRegisterError);
+  const loading = useAppSelector(selectRegisterLoading);
 
   const [state, setState] = useState<RegisterMutation>({
     username: "",
@@ -54,6 +56,7 @@ const Register = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      {loading && <Preloader loading={loading} />}
       <Box
         sx={{
           marginTop: 8,

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Comment } from "../../../types";
-import { RootState } from "../../../app/store";
+import { Comment } from "../../types";
+import { RootState } from "../../app/store";
 import { fetchComments } from "./commentsThunk";
 
 interface commentsState {
@@ -33,3 +33,4 @@ export const commentsSlice = createSlice({
 
 export const commentsReducer = commentsSlice.reducer;
 export const selectComments = (state: RootState) => state.comments.comments;
+export const selectCommentsLoading = (state: RootState) => state.comments.fetchLoading;

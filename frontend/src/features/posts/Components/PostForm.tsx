@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { Button, Grid, TextField } from "@mui/material";
 import { PostMutation } from "../../../types";
 import FileInput from "../../../components/UI/FileInput/FileInput";
@@ -16,6 +16,12 @@ const PostForm: React.FC<Props> = ({ onSubmit }) => {
 
   const submitFormHandler = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!state.description && !state.image) {
+      alert("Fill up description or select image!");
+      return;
+    }
+
     onSubmit(state);
   };
 

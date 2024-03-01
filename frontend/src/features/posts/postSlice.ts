@@ -7,12 +7,14 @@ interface postsState {
   posts: Post[];
   singlePost: Post | null;
   fetchLoading: boolean;
+  singleFetchLoading: boolean;
 }
 
 const initialState: postsState = {
   posts: [],
   singlePost: null,
   fetchLoading: false,
+  singleFetchLoading: false,
 };
 
 export const postsSlice = createSlice({
@@ -32,14 +34,14 @@ export const postsSlice = createSlice({
     });
 
     builder.addCase(fetchOnePost.pending, (state) => {
-      state.fetchLoading = true;
+      state.singleFetchLoading = true;
     });
     builder.addCase(fetchOnePost.fulfilled, (state, { payload: post }) => {
-      state.fetchLoading = false;
+      state.singleFetchLoading = false;
       state.singlePost = post;
     });
     builder.addCase(fetchOnePost.rejected, (state) => {
-      state.fetchLoading = false;
+      state.singleFetchLoading = false;
     });
   },
 });
@@ -47,3 +49,5 @@ export const postsSlice = createSlice({
 export const postsReducer = postsSlice.reducer;
 export const selectPosts = (state: RootState) => state.posts.posts;
 export const selectSinglePost = (state: RootState) => state.posts.singlePost;
+export const selectPostsLoading = (state:RootState) => state.posts.fetchLoading;
+export const selectSinglePostLoading = (state:RootState) => state.posts.singleFetchLoading;
