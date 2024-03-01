@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { Post } from "../../../types";
 import { apiURL } from "../../../constants";
 import dayjs from "dayjs";
+import ChatIcon from '../../../assets/chatIcon.webp'
 
 interface Props {
   post: Post;
@@ -9,7 +10,7 @@ interface Props {
 
 const PostItem: React.FC<Props> = ({ post }) => {
   const dateFormat = dayjs(post.date).format("DD/MM/YYYY HH:mm:ss");
-  let cardImage;
+  let cardImage = ChatIcon;
 
   if (post.image) {
     cardImage = apiURL + "/" + post.image;

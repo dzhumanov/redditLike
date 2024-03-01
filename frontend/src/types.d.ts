@@ -10,6 +10,12 @@ export interface Post {
   date: Date;
 }
 
+export interface PostMutation {
+  title: string;
+  description: string;
+  image: File | null;
+}
+
 export interface User {
   _id: string;
   username: string;
