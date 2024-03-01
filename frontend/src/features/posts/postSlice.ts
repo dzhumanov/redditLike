@@ -49,5 +49,7 @@ export const postsSlice = createSlice({
 export const postsReducer = postsSlice.reducer;
 export const selectPosts = (state: RootState) => state.posts.posts;
 export const selectSinglePost = (state: RootState) => state.posts.singlePost;
-export const selectPostsLoading = (state:RootState) => state.posts.fetchLoading;
-export const selectSinglePostLoading = (state:RootState) => state.posts.singleFetchLoading;
+export const selectPostsLoading = (state: RootState) =>
+  state.posts.fetchLoading;
+export const selectSinglePostLoading = (state: RootState) =>
+  state.posts.singleFetchLoading;

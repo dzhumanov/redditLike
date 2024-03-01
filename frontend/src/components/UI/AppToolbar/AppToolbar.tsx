@@ -1,32 +1,33 @@
 import { NavLink } from "react-router-dom";
-import {
-  AppBar,
-  Grid,
-  styled,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Grid, styled, Toolbar, Typography } from "@mui/material";
 import { useAppSelector } from "../../../app/hooks";
 import { selectUser } from "../../../features/users/usersSlice";
 import UserMenu from "./UserMenu";
 import AnonymousMenu from "./AnonymousMenu";
+import Logo from "../../../assets/logo.png";
 
 const Link = styled(NavLink)({
-  color: "inherit",
+  color: "#000",
   textDecoration: "none",
   "&:hover": {
-    color: "inherit",
+    color: "#000",
   },
 });
 
 const AppToolbar = () => {
   const user = useAppSelector(selectUser);
   return (
-    <AppBar position="sticky" sx={{ mb: 2 }}>
-      <Toolbar>
+    <AppBar position="sticky" sx={{ backgroundColor: "#fff" }}>
+      <Toolbar sx={{ width: "65%", margin: "auto" }}>
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography variant="h3" component="div" sx={{ textAlign: "center" }}>
-            <Link to="/">Reddit</Link>
+            <Link to="/">
+              <img
+                src={Logo}
+                alt="Logo"
+                style={{ width: "150px", height: "auto" }}
+              />
+            </Link>
           </Typography>
           <Grid item>
             {user ? <UserMenu user={user} /> : <AnonymousMenu />}

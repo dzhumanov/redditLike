@@ -9,6 +9,9 @@ const theme = createTheme({
       },
     },
   },
+  typography: {
+    fontFamily: ["SpaceGrotesk", "SpaceGroteskBold"].join(","),
+  },
 });
 
 export default theme;

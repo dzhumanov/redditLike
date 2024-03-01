@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import PostForm from "./Components/PostForm";
 import { PostMutation } from "../../types";
 import { createPost } from "./postThunk";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { selectUser } from "../users/usersSlice";
 import { useEffect } from "react";
 
@@ -27,10 +27,18 @@ const CreatePost = () => {
     }
   };
   return (
-    <>
+    <Container
+      sx={{
+        bgcolor: "#fff",
+        pt: "30px",
+        pb: "30px",
+        border: "3px solid black",
+        borderRadius: "10px",
+      }}
+    >
       <Typography variant="h4">Create new post</Typography>
       <PostForm onSubmit={onFormSubmit} />
-    </>
+    </Container>
   );
 };
 

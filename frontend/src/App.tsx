@@ -15,7 +15,7 @@ function App() {
         <AppToolbar />
       </header>
       <main>
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           <Routes>
             <Route path="/" element={<Posts />} />
             <Route path="/posts/:id" element={<FullPost />} />

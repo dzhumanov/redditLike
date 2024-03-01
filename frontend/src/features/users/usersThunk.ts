@@ -46,4 +46,3 @@ export const login = createAsyncThunk<
     throw e;
   }
 });
-

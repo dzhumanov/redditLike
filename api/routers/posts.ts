@@ -8,7 +8,9 @@ const postsRouter = express.Router();
 
 postsRouter.get("/", async (req, res, next) => {
   try {
-    const posts = await Post.find().populate("user", "username").sort({date: -1});
+    const posts = await Post.find()
+      .populate("user", "username")
+      .sort({ date: -1 });
     return res.send(posts);
   } catch (e) {
     next(e);
@@ -24,7 +26,7 @@ postsRouter.get("/:id", async (req, res, next) => {
       return res.status(404).send({ error: "Wrong ObjectId!" });
     }
 
-    const post = await Post.findById(_id);
+    const post = await Post.findById(_id).populate("user", "username");
 
     if (!post) {
       return res.status(404).send({ error: "Not found!" });

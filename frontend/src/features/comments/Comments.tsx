@@ -40,13 +40,15 @@ const Comments = () => {
       {loading ? (
         <Preloader loading={loading} />
       ) : (
-        <Grid container>
+        <Grid container direction="column">
           {user && (
             <CommentForm postId={postId} onSubmit={onCommentFormSubmit} />
           )}
-          {comments.map((comment) => (
-            <CommentItem comment={comment} key={comment._id} />
-          ))}
+          <Grid container direction="column">
+            {comments.map((comment) => (
+              <CommentItem comment={comment} key={comment._id} />
+            ))}
+          </Grid>
         </Grid>
       )}
     </>

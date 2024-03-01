@@ -17,14 +17,35 @@ const Posts = () => {
 
   return (
     <>
-      <Typography variant="h3">All posts</Typography>
+      <Typography variant="h3" sx={{ pt: "20px", fontWeight: "bold" }}>
+        Recent posts:
+      </Typography>
       {loading ? (
         <Preloader loading={loading} />
       ) : (
-        <Grid item container direction="column" spacing={2}>
-          {posts.map((post) => (
-            <PostItem post={post} key={post._id} />
-          ))}
+        <Grid
+          item
+          container
+          direction="column"
+          spacing={2}
+          sx={{
+            mt: "10px",
+            border: "3px solid black",
+            borderBottom: "0",
+            bgcolor: "#fff",
+          }}
+        >
+          {posts.length <= 0 ? (
+            <Typography variant="h1" sx={{ borderBottom: "3px solid black" }}>
+              No posts yet
+            </Typography>
+          ) : (
+            <>
+              {posts.map((post) => (
+                <PostItem post={post} key={post._id} />
+              ))}
+            </>
+          )}
         </Grid>
       )}
     </>

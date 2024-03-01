@@ -41,11 +41,19 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      component="div"
+      maxWidth="xs"
+      sx={{
+        background: "#fff",
+        height: "100%",
+        border: "3px solid black",
+        borderRadius: "10px",
+      }}
+    >
       {loading && <Preloader loading={loading} />}
       <Box
         style={{
-          marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -93,7 +101,16 @@ const Login = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{
+              mt: 3,
+              mb: 2,
+              bgcolor: "#000",
+              fontSize: "32px",
+              "&:hover": {
+                bgcolor: "#fff",
+                color: "#000",
+              },
+            }}
           >
             Sign In
           </Button>

@@ -10,10 +10,10 @@ interface Props {
 }
 
 const Link = styled(NavLink)({
-  color: "inherit",
+  color: "#000",
   textDecoration: "none",
   "&:hover": {
-    color: "inherit",
+    color: "#000",
   },
 });
 
@@ -36,7 +36,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 
   return (
     <>
-      <Button onClick={handleClick} color="inherit">
+      <Button onClick={handleClick} sx={{ color: "#000", fontSize: "32px" }}>
         Hello, {user.username}
       </Button>
 
@@ -47,11 +47,13 @@ const UserMenu: React.FC<Props> = ({ user }) => {
         onClose={handleClose}
       >
         <MenuItem>
-          <Typography variant="h6" component="div" sx={{ textAlign: "center" }}>
-            <Link to="/addNew">add new post</Link>
+          <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
+            <Link to="/addNew">Add new post</Link>
           </Typography>
         </MenuItem>
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <Typography variant="h5">Logout</Typography>
+        </MenuItem>
       </Menu>
     </>
   );

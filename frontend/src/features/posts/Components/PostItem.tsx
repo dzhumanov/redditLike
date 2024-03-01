@@ -33,8 +33,7 @@ const PostItem: React.FC<Props> = ({ post }) => {
         md={4}
         lg={3}
         sx={{
-          border: "3px solid black",
-          mt: "20px",
+          borderBottom: "3px solid black",
           "&.MuiGrid-container": {
             padding: 0,
           },
@@ -47,8 +46,9 @@ const PostItem: React.FC<Props> = ({ post }) => {
               display: "block",
               width: "auto",
               maxWidth: "100%",
-              maxHeight: "150px",
+              maxHeight: "100%",
               height: "auto",
+              objectFit: "cover",
             }}
             src={cardImage}
           />

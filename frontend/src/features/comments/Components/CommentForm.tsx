@@ -35,7 +35,19 @@ const CommentForm: React.FC<Props> = ({ postId, onSubmit }) => {
             />
           </Grid>
           <Grid item xs>
-            <Button type="submit" color="primary" variant="contained">
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                mb: 2,
+                bgcolor: "#000",
+                fontSize: "32px",
+                "&:hover": {
+                  bgcolor: "#fff",
+                  color: "#000",
+                },
+              }}
+            >
               Create
             </Button>
           </Grid>

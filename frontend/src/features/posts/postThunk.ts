@@ -19,7 +19,6 @@ export const fetchOnePost = createAsyncThunk<Post, string>(
   }
 );
 
-
 export const createPost = createAsyncThunk<
   void,
   PostMutation,
