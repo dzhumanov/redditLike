@@ -5,6 +5,7 @@ import { selectSinglePost } from "../postSlice";
 import { useEffect } from "react";
 import { fetchOnePost } from "../postThunk";
 import { apiURL } from "../../../constants";
+import Comments from "../../comments/Comments";
 
 const FullPost = () => {
   const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ const FullPost = () => {
           <Typography variant="h4">{post?.description}</Typography>
         </Grid>
       </Grid>
+      <Comments/>
     </>
   );
 };

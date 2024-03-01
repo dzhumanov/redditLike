@@ -46,3 +46,13 @@ export interface ValidationError {
   name: string;
   _message: string;
 }
+
+export interface Comment {
+  _id: string;
+  user: {
+    username: string;
+    _id: string;
+  };
+  postId: string;
+  message: string;
+}
